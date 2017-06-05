@@ -1,0 +1,45 @@
+body {
+    background-color: #2a3132;
+}
+
+hr {
+    width: 50%;
+}
+
+div {
+    border-radius: 25px;
+    padding: 20px;
+    width: 50%;
+    height: 150px;
+    background-color: #336b87;
+    -webkit-transition: background-color 1s, color 0.5s; /* Safari */
+    transition: background-color 1s, color 0.5s;
+}
+
+div:hover {
+    background-color: #90afc5;
+}
+
+h1 {
+    color: #ffffff;
+}
+
+h2 {
+    color: #763626;
+    -webkit-transition: color 1s; /* Safari */
+    transition: color 1s;
+}
+
+p {
+    color: #763626;
+    -webkit-transition: color 1s; /* Safari */
+    transition: color 1s;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}

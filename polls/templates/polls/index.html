@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Questions</title>
+</head>
+<body>
+    <center>
+        <h3>
+            <u>Top Questions</u>
+            <ul>
+            {% for question in object_list %}
+                <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+            {% endfor %}
+            </ul>
+        </h3>
+        <hr>
+    </center>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result for Question {{ question.id }}</title>
+</head>
+<body>
+    <center>
+        <h3>
+            Question: {{ question.question_text }}
+            <br>
+            {% if mvote %}
+            Maximum votes are for choice: {{ mvote.choice_text }} (votes = {{ mvote.votes }})
+            {% else %}
+            No Votes Yet...!
+            {% endif %}
+        </h3>
+        <input type="button" name="back" id="back" value="Back" onclick="location.href='/polls/'" />
+    </center>
+    <hr>
+</body>
+</html>

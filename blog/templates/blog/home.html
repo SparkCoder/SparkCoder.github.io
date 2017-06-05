@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="{% static 'blog/css/style_home.css' %}" />
+</head>
+<body>
+    <center>
+        <h1><u>Posts</u></h1>
+        {% for post in object_list %}
+        <a href="/blog/{{ post.id }}">
+            <div>
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.content }}</p>
+            </div>
+        </a>
+        <hr>
+        {% endfor %}
+    </center>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question {{ question.id }}</title>
+
+    <style>
+        h4 {
+            color: #8800ff;
+        }
+    </style>
+
+</head>
+<body>
+    <center>
+        <h3>
+            Question: {{ question.question_text }}
+            <br>
+            Date Published: {{ question.pub_date }}
+            <br>
+
+            <h4>Choices</h4>
+            <ul>
+            {% for c in question.choice_set.all %}
+                <li>{{ c.choice_text }} (Votes: {{ c.votes }})</li>
+            {% endfor %}
+            </ul>
+        </h3>
+        <input type="button" name="vote" id="vote" value="Vote" onclick="location.href='/polls/{{ question.id }}/vote'"> <input type="button" name="result" id="result" value="Results" onclick="location.href='/polls/{{ question.id }}/results'"> <input type="button" name="back" id="back" value="Back" onclick="location.href='/polls/'">
+    </center>
+    <hr>
+</body>
+</html>

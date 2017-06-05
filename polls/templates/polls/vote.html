@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vote for Question {{ question.id }}</title>
+
+    <style>
+        h4 {
+            color: #8800ff;
+        }
+        strong {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h3>
+            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+            Question: {{ question.question_text }}
+
+            <form action="{% url 'polls:vote' question.id %}" method="post">
+                <p>
+                    <h4>Choices</h4>
+                    {% csrf_token %}
+                    {% for choice in question.choice_set.all %}
+                    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+                    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
+                    <br>
+                    {% endfor %}
+                    <input type="submit" value="Vote" /> <input type="button" name="back" id="back" value="Back" onclick="location.href='/polls/'" />
+                </p>
+            </form>
+        </h3>
+    </center>
+    <hr>
+</body>
+</html>

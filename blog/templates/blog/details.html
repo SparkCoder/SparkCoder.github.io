@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="{% static 'blog/css/style_details.css' %}" />
+</head>
+    <center>
+        <br>
+        <div>
+            <h1><u>{{ post.title }}</u></h1>
+            <b>({{ post.pub_date }})</b>
+            <br>
+            <pre>
+            <p>{{ post.content }}</p>
+            </pre>
+            <image src="/media/{{ post.img }}"  height="300px" width="500px"/>
+            <br>
+            <h4><u>Comments</u></h4>
+            <ul>
+                {% for c in post.comment_set.all %}
+                <li>
+                    <b><u>{{ c.user }} ({{ c.date }}):</u></b>
+                    <br>
+                    <p>{{ c.comment_text }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+            <br>
+        </div>
+    </center>
+    <hr>
+    <center><input type="button" name="bB" id="bB" value="Back" onclick="location.href='/blog/'" /></center>
+</body>
+</html>
