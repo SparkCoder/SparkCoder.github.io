@@ -7,34 +7,36 @@
     {% include 'blog/nav_bar.html' %}
 
     <div id="cover">
-        <h1 id="cover-text">Welcome</h1>
-        <h3 id="cover-subtext">Welcome to my Blog</h3>
+        <h1 id="cover-text">New Post</h1>
+        <h3 id="cover-subtext">Please Fill in the details</h3>
     </div>
 
     <div class="post-div" style="width: 100%;">
+        <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
         <div id="posts">
             <div class="container-fluid">
                 <div class="row">
-
-                    {% for post in object_list %}
                     <div class="col-md-4 col-sm-6">
-                        <a href="/blog/{{ post.id }}"><h3>{{ post.title }}</h3></a>
-                        <img src="/media/{{ post.img }}" class="img-responsive img" alt="Responsive image">
-                        <p>{{ post.content }}...<a href="/blog/{{ post.id }}">read more</a></p>
+                        <h3>Title: </h3><input type="text" name="title" id="title" />
+                        <h3>Image: </h3><input type="file" name="img" id="img" />
+                        <h3>Content: </h3><textarea rows="4" cols="50" name="content" id="content"></textarea>
+                        <br>
+                        <input type="submit" name="aB" id="aB" value="Post" onclick="location.href='/blog/post'" />
                     </div>
-                    {% endfor %}
 
                 </div>
             </div>
         </div>
-        <center><input type="button" name="aB" id="aB" value="Add Post" onclick="location.href='/blog/post'" /></center>
         <br>
+        </form>
         <div class="footer">
             <div class="container-fluid">
                 <div class="footer-data">
                     <p><a href="">GitHub</a> | <a href="">LinkedIn</a</p>
                     <p> Created by Abhishek.D, MISR Lab, ASE</p>
                 </div>
+
             </div>
         </div>
     </div>

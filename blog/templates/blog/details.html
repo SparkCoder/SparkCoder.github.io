@@ -1,37 +1,46 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+{% extends 'blog/base.html' %}
 
-    <link rel="stylesheet" href="{% static 'blog/css/style_details.css' %}" />
-</head>
-    <center>
-        <br>
-        <div>
-            <h1><u>{{ post.title }}</u></h1>
-            <b>({{ post.pub_date }})</b>
-            <br>
-            <pre>
-            <p>{{ post.content }}</p>
-            </pre>
-            <image src="/media/{{ post.img }}"  height="300px" width="500px"/>
-            <br>
-            <h4><u>Comments</u></h4>
-            <ul>
-                {% for c in post.comment_set.all %}
-                <li>
-                    <b><u>{{ c.user }} ({{ c.date }}):</u></b>
-                    <br>
-                    <p>{{ c.comment_text }}</p>
-                </li>
-                {% endfor %}
-            </ul>
-            <br>
+{% block title %} Home {% endblock %}
+
+{% block body %}
+
+    {% include 'blog/nav_bar.html' %}
+
+    <div id="cover-detail" style="background-image: url('/media/{{ post.img }}');">
+        <h1 id="cover-text" style="-webkit-text-stroke: 2px black;">{{ post.title }}</h1>
+        <h3 id="cover-subtext" style="-webkit-text-stroke: 2px black;">Published on: {{ post.pub_date }}</h3>
+    </div>
+
+    <div id="post-content" style="width: 100%;">
+        <div class="post-detail">
+            <div class="container-fluid">
+                <div class="row">
+                    <center>
+                    <div class="col-md">
+                        <h1>{{ post.title }}</h1>
+                        <br>
+                        <p>
+                            {{ post.content }}
+                        </p>
+                    </div>
+                        </center>
+                    <div class="col-md-4">
+
+                    </div>
+                </div>
+            </div>
         </div>
-    </center>
-    <hr>
-    <center><input type="button" name="bB" id="bB" value="Back" onclick="location.href='/blog/'" /></center>
-</body>
-</html>
+
+        <center><input type="button" name="bB" id="bB" value="Back" onclick="location.href='/blog/'" /></center>
+
+        <div class="footer">
+            <div class="container-fluid">
+                <div class="footer-data">
+                    <p><a href="">GitHub</a> | <a href="">LinkedIn</a</p>
+                    <p> Created by Abhishek.D, MISR Lab, ASE</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

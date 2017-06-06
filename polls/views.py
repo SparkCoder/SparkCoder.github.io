@@ -11,14 +11,14 @@ from polls.models import Question, Choice
 def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
     context = {'latest_question_list': latest_question_list}
-    return render(request, 'polls/index.html', context)
+    return render(request, 'polls/base.html', context)
 
 """
 
 
 class Index(generic.ListView):
     model = Question
-    template_name = 'polls/index.html'
+    template_name = 'polls/base.html'
 
 
 """
