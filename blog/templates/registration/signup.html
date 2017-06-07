@@ -1,0 +1,61 @@
+{% extends 'blog/base.html' %}
+
+{% block title %} Registration {% endblock %}
+
+{% block body %}
+
+    {% include 'blog/nav_bar.html' %}
+
+    <div id="cover">
+        <h1 id="cover-text" style="-webkit-text-stroke: 2px black;">Registration</h1>
+        {% if error1 == 1 %}
+        <h3 id="cover-subtext" style="-webkit-text-stroke: 2px black;">Passwords don't match, please enter properly</h3>
+        {% elif error1 == 2 %}
+        <h3 id="cover-subtext" style="-webkit-text-stroke: 2px black;">Email already taken, please enter another Email</h3>
+        {% elif error1 == 3 %}
+        <h3 id="cover-subtext" style="-webkit-text-stroke: 2px black;">User Name already taken, please enter another User Name</h3>
+        {% else %}
+        <h3 id="cover-subtext" style="-webkit-text-stroke: 2px black;">Please Enter your Details</h3>
+        {% endif %}
+    </div>
+
+    <div class="post-div" style="width: 100%;">
+        <form action="" method="POST">
+        {% csrf_token %}
+        <div id="posts">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                        <h3>First Name: <input type="text" name="firstname" id="fname" /></h3>
+                        <h3>Last Name: <input type="text" name="lastname" id="lname" /></h3>
+                        <h3>Email ID: <input type="text" name="email" id="email" /></h3>
+                        <h3>User Name: <input type="text" name="username" id="uname" /></h3>
+                        {% if error2 == 1 %}
+                        <h3><b><ul><li>This Field is required.</li></ul></b></h3>
+                        {% endif %}
+                        <h3>Your Password: <input type="password" name="new_password1" id="pass" /></h3>
+                        {% if error3 == 1 %}
+                        <h3><b><ul><li>This Field is required.</li></ul></b></h3>
+                        {% endif %}
+                        <h3>Password Again: <input type="password" name="new_password2" id="passc" /></h3>
+                        <br>
+                        <center><input type="submit" name="signup" id="signup" value="Sign-Up" /> <input type="button" name="bB" id="bB" value="Back" onclick="location.href='/accounts/login/'" /></center>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <br>
+        </form>
+        <div class="footer" style="height: 200px">
+            <div class="container-fluid">
+                <div class="footer-data">
+                    <p><a href="">GitHub</a> | <a href="">LinkedIn</a</p>
+                    <p> Created by Abhishek.D, MISR Lab, ASE</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

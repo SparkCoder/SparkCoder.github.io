@@ -1,42 +1,36 @@
 {% extends 'blog/base.html' %}
 
-{% block title %} Home {% endblock %}
+{% block title %} Logged Out {% endblock %}
 
 {% block body %}
 
     {% include 'blog/nav_bar.html' %}
 
     <div id="cover">
-        <h1 id="cover-text">Welcome</h1>
-        <h3 id="cover-subtext">Welcome to my Blog</h3>
+        <h1 id="cover-text" style="-webkit-text-stroke: 2px black;">You are Logged Out</h1>
+        <h3 id="cover-subtext" style="-webkit-text-stroke: 2px black;">To access the blog please Login</h3>
     </div>
 
     <div class="post-div" style="width: 100%;">
         <div id="posts">
             <div class="container-fluid">
                 <div class="row">
-                    {% if plen > 0 %}
-                    {% for post in object_list %}
                     <div class="col-md-4 col-sm-6">
-                        <a href="/blog/{{ post.id }}"><h3>{{ post.title }}</h3></a>
-                        <img src="/media/{{ post.img }}" class="img-responsive img" alt="Responsive image">
-                        <p>{{ post.content }}...<a href="/blog/{{ post.id }}">read more</a></p>
+                        <h1>Please Login...</h1>
+                        <input type="button" name="login" id="login" value="Login" onclick="location.href='/accounts/login/'" />
                     </div>
-                    {% endfor %}
-                    {% else %}
-                    <h1>No Posts Yet...</h1>
-                    {% endif %}
 
                 </div>
             </div>
         </div>
         <br>
-        <div class="footer">
+        <div class="footer" style="height: 200px">
             <div class="container-fluid">
                 <div class="footer-data">
                     <p><a href="">GitHub</a> | <a href="">LinkedIn</a</p>
                     <p> Created by Abhishek.D, MISR Lab, ASE</p>
                 </div>
+
             </div>
         </div>
     </div>

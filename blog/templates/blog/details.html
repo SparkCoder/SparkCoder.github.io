@@ -1,12 +1,12 @@
 {% extends 'blog/base.html' %}
 
-{% block title %} Home {% endblock %}
+{% block title %} {{ post.title }} {% endblock %}
 
 {% block body %}
 
     {% include 'blog/nav_bar.html' %}
 
-    <div id="cover-detail" style="background-image: url('/media/{{ post.img }}');">
+    <div id="cover-detail" style="background-image: url('/media/{{ post.img }}'); background-position: 0% 50%; ">
         <h1 id="cover-text" style="-webkit-text-stroke: 2px black;">{{ post.title }}</h1>
         <h3 id="cover-subtext" style="-webkit-text-stroke: 2px black;">Published on: {{ post.pub_date }}</h3>
     </div>
@@ -31,7 +31,26 @@
             </div>
         </div>
 
-        <center><input type="button" name="bB" id="bB" value="Back" onclick="location.href='/blog/'" /></center>
+        <center><input type="button" name="bB" id="bB" value="Back" onclick="location.href='/blog/'" />{% if post.user.username == request.user.username %}<input type="button" name="eB" id="eB" value="Edit" onclick="location.href='/blog/{{ post.pk }}/edit'" /> <input type="button" name="dB" id="dB" value="Delete" onclick="location.href='/blog/{{ post.pk }}/delete'" />{% endif %}</center>
+        <hr style="color: #123455; background-color: #123455; height: 1px; width: 75%;">
+        <br>
+        <center>
+        {% for i in post.comment_set.all %}
+        <div class="comm">
+            <h3><b style="color:#886600">{{ i.user }} ({{ i.date }}):</b></h3>
+            <p><h3>{{ i.comment_text }}</h3></p>
+        </div>
+        <br>
+        {% endfor %}
+        <br>
+        <h2>Add Comments...</h2>
+        <form method="POST" action="/blog/{{ post.pk }}/comment">
+        {% csrf_token %}
+        <textarea rows="4" cols="50" name="cText" id="cText"></textarea>
+        <br>
+        <input type="submit" name="subB" id="subB" value="Post Comment" />
+        </form>
+        </center>
 
         <div class="footer">
             <div class="container-fluid">

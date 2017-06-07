@@ -1,0 +1,47 @@
+{% extends 'blog/base.html' %}
+
+{% block title %} Login {% endblock %}
+
+{% block body %}
+
+    {% include 'blog/nav_bar.html' %}
+
+    <div id="cover">
+        <h1 id="cover-text" style="-webkit-text-stroke: 2px black;">Login</h1>
+        {% if form.errors %}
+        <h3 id="cover-subtext" style="-webkit-text-stroke: 2px black;">Wrong Credentials, please enter proper credentials...</h3>
+        {% else %}
+        <h3 id="cover-subtext" style="-webkit-text-stroke: 2px black;">Please Enter your Credentials</h3>
+        {% endif %}
+    </div>
+
+    <div class="post-div" style="width: 100%;">
+        <form action="/accounts/login/" method="post">
+        {% csrf_token %}
+        <div id="posts">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                        <h3>User Name: <input type="text" name="username" id="name" /></h3>
+                        <h3>Password: <input type="password" name="password" id="pass" /></h3>
+                        <br>
+                        <center><input type="submit" name="login" id="login" value="Login" /> <input type="button" name="fB" id="fB" value="Forgot Password?" onclick="location.href='/accounts/password_reset/'" /> <input type="button" name="nB" id="nB" value="New Here?" onclick="location.href='/accounts/signup/'" /></center>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <br>
+        </form>
+        <div class="footer" style="height: 200px">
+            <div class="container-fluid">
+                <div class="footer-data">
+                    <p><a href="">GitHub</a> | <a href="">LinkedIn</a</p>
+                    <p> Created by Abhishek.D, MISR Lab, ASE</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
