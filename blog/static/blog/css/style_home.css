@@ -1,5 +1,3 @@
-
-
 hr.home {
     width: 50%;
 }
@@ -20,18 +18,6 @@ div:hover.home {
 
 h1.home {
     color: #ffffff;
-}
-
-h2.home {
-    color: #763626;
-    -webkit-transition: color 1s; /* Safari */
-    transition: color 1s;
-}
-
-p.home {
-    color: #763626;
-    -webkit-transition: color 1s; /* Safari */
-    transition: color 1s;
 }
 
 a.home:link {

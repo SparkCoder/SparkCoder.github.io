@@ -22,8 +22,9 @@ from blog import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^blog/', include('blog.urls')),
     url(r'^polls/', include('polls.urls')),
+    url(r'^blog/', include('blog.urls')),
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^accounts/signup/$', views.signup, name='signup'),
+    url(r'^', views.root_page, name='root_page'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

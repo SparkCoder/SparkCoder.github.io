@@ -154,3 +154,7 @@ def add_comment(request, pk):
         return redirect("details", int(pk))
     else:
         return redirect("logout")
+
+
+def root_page(request):
+    return render(request, 'Base/Base.html', {})
