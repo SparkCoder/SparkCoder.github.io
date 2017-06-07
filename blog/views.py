@@ -1,3 +1,5 @@
+from http.client import HTTPResponse
+
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
@@ -93,7 +95,7 @@ def edit_post(request, pk):
         if request.method == 'POST':
             postr = Post.objects.get(id=int(pk))
             if postr.user.username != request.user.username:
-                print("Not Accessible")
+                return redirect("home")
             else:
                 if 'title' in request.POST:
                     title = request.POST['title']
@@ -132,7 +134,7 @@ def delete_post(request, pk):
         if request.method == 'POST':
             poste = Post.objects.get(id=int(pk))
             if poste.user.username != request.user.username:
-                print("Not Accessible")
+                return redirect("home")
             else:
                 poste.delete()
             return redirect("home")
