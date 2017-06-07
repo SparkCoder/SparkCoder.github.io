@@ -8,7 +8,7 @@
 
     <div id="cover-detail" style="background-image: url('/media/{{ post.img }}'); background-position: 0% 50%; ">
         <h1 id="cover-text" style="-webkit-text-stroke: 2px black;">{{ post.title }}</h1>
-        <h3 id="cover-subtext" style="-webkit-text-stroke: 2px black;">Published on: {{ post.pub_date }}</h3>
+        <h3 id="cover-subtext" style="-webkit-text-stroke: 2px black;">Published by: {{ post.user.username }} on: {{ post.pub_date }}</h3>
     </div>
 
     <div id="post-content" style="width: 100%;">
